@@ -1,0 +1,258 @@
+/**
+ * PRODUCTS PAGE STYLES
+ * Style: Glassmorphism & Mesh Gradients
+ */
+
+/* 覆盖默认 Header 背景，使其在 Hero 区域透明 */
+.modern-header.transparent {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+/* --- Hero Section (Mesh Gradient) --- */
+.premium-hero {
+    position: relative;
+    padding: 180px 0 120px; /* 顶部留白给 Header */
+    background-color: #0a2540;
+    overflow: hidden;
+    color: white;
+    text-align: center;
+}
+
+/* 动态背景层 */
+.premium-hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: 
+        radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+        radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
+        radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+    z-index: 1;
+}
+
+/* 装饰性斜切线 (Stripe 风格) */
+.hero-slant {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: var(--bg-body);
+    clip-path: polygon(0 100%, 100% 0, 100% 100%);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-full);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent-cyan);
+    margin-bottom: 24px;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    letter-spacing: -1px;
+}
+
+.hero-desc {
+    font-size: 1.25rem;
+    color: #adbdcc; /* 高级灰 */
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+/* --- Filter Bar --- */
+.filter-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.filter-group {
+    display: flex;
+    gap: 8px;
+    background: #e3e8ee;
+    padding: 4px;
+    border-radius: var(--radius-full);
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    border: none;
+    background: transparent;
+    color: var(--text-body);
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.filter-btn.active {
+    background: white;
+    color: var(--brand-primary);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.sort-select {
+    padding: 10px 16px;
+    border: 1px solid #e3e8ee;
+    border-radius: var(--radius-lg);
+    background: white;
+    color: var(--text-main);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* --- Product Grid --- */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 32px;
+}
+
+/* 高级卡片样式 */
+.product-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: relative;
+    transition: var(--transition-smooth);
+    border: 1px solid rgba(0,0,0,0.04); /* 极其微弱的边框 */
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.card-img-wrap {
+    height: 220px;
+    background: #f7f9fc; /* 浅灰底色衬托产品 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+}
+
+.card-img-wrap img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+    mix-blend-mode: multiply; /* 让白底图片更好地融入灰底 */
+}
+
+.product-card:hover .card-img-wrap img {
+    transform: scale(1.08);
+}
+
+/* 折扣标签 - 极简风 */
+.badge-off {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--accent-red);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.card-body {
+    padding: 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-category {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--brand-primary);
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.card-price-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto; /* 推到底部 */
+    padding-top: 16px;
+}
+
+.price-new {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.price-old {
+    font-size: 14px;
+    color: var(--text-light);
+    text-decoration: line-through;
+}
+
+.btn-add-cart {
+    margin-left: auto;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #f0f4f8;
+    color: var(--text-main);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-add-cart:hover {
+    background: var(--brand-primary);
+    color: white;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .premium-hero { padding: 140px 0 80px; }
+    .hero-title { font-size: 2.5rem; }
+    .products-grid { grid-template-columns: 1fr; }
+    .filter-container { flex-direction: column; align-items: stretch; }
+}

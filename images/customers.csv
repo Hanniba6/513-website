@@ -1,0 +1,43 @@
+id,name,email,password,phone,address,registration_date,last_login,months_as_customer,order_count,days_since_last_order,last_order_date,churned
+1,Test User,test@example.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138000,北京市朝阳区测试路123号,2025/12/4 14:28:40,NULL,0,0,NULL,NULL
+2,张三,zhangsan@example.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13900139000,上海市浦东新区测试街456号,2025/12/4 14:28:40,NULL,0,0,NULL,NULL
+3,Alice Johnson,alice.johnson@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138001,北京市朝阳区建国路1号,2023/12/11 15:26:14,NULL,24,12,15,2025/11/26 15:26:14
+4,Bob Smith,bob.smith@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138002,上海市浦东新区陆家嘴2号,2024/6/11 15:26:14,NULL,18,8,22,2025/11/19 15:26:14
+5,Carol White,carol.white@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138003,广州市天河区天河路3号,2023/6/11 15:26:14,NULL,30,15,8,2025/12/3 15:26:14
+6,David Brown,david.brown@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138004,深圳市南山区科技路4号,2024/12/11 15:26:14,NULL,12,6,28,2025/11/13 15:26:14
+7,Emma Davis,emma.davis@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138005,成都市武侯区人民路5号,2022/12/11 15:26:14,NULL,36,20,12,2025/11/29 15:26:14
+8,Frank Miller,frank.miller@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138006,杭州市西湖区西湖大道6号,2024/9/11 15:26:14,NULL,15,9,35,2025/11/6 15:26:14
+9,Grace Wilson,grace.wilson@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138007,南京市鼓楼区中山路7号,2024/4/11 15:26:14,NULL,20,11,18,2025/11/23 15:26:14
+10,Henry Moore,henry.moore@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138008,武汉市江汉区解放大道8号,2023/8/11 15:26:14,NULL,28,14,25,2025/11/16 15:26:14
+11,Ivy Taylor,ivy.taylor@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138009,西安市雁塔区长安路9号,2024/2/11 15:26:14,NULL,22,10,20,2025/11/21 15:26:14
+12,Jack Anderson,jack.anderson@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138010,重庆市渝中区解放碑10号,2024/8/11 15:26:14,NULL,16,7,30,2025/11/11 15:26:14
+13,Kelly Thomas,kelly.thomas@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138011,天津市和平区南京路11号,2023/11/11 15:26:14,NULL,25,8,45,2025/10/27 15:26:14
+14,Liam Jackson,liam.jackson@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138012,青岛市市南区香港路12号,2024/5/11 15:26:14,NULL,19,5,52,2025/10/20 15:26:14
+15,Mia White,mia.white@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138013,大连市中山区人民路13号,2023/4/11 15:26:14,NULL,32,10,68,2025/10/4 15:26:14
+16,Noah Harris,noah.harris@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138014,沈阳市和平区中街14号,2024/10/11 15:26:14,NULL,14,4,75,2025/9/27 15:26:14
+17,Olivia Martin,olivia.martin@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138015,长沙市天心区五一路15号,2023/9/11 15:26:14,NULL,27,9,58,2025/10/14 15:26:14
+18,Paul Thompson,paul.thompson@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138016,福州市鼓楼区五四路16号,2024/3/11 15:26:14,NULL,21,6,62,2025/10/10 15:26:14
+19,Quinn Garcia,quinn.garcia@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138017,厦门市思明区中山路17号,2024/7/11 15:26:14,NULL,17,5,70,2025/10/2 15:26:14
+20,Rachel Martinez,rachel.martinez@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138018,郑州市金水区花园路18号,2024/11/11 15:26:14,NULL,13,4,80,2025/9/22 15:26:14
+21,Samuel Robinson,samuel.robinson@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138019,哈尔滨市南岗区中央大街19号,2023/7/11 15:26:14,NULL,29,11,65,2025/10/7 15:26:14
+22,Tina Clark,tina.clark@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138020,石家庄市长安区中山路20号,2024/1/11 15:26:14,NULL,23,7,72,2025/9/30 15:26:14
+23,Uma Rodriguez,uma.rodriguez@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138021,太原市迎泽区迎泽大街21号,2023/10/11 15:26:14,NULL,26,3,105,2025/8/28 15:26:14
+24,Victor Lee,victor.lee@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138022,济南市历下区泉城路22号,2023/5/11 15:26:14,NULL,31,5,120,2025/8/13 15:26:14
+25,Wendy Walker,wendy.walker@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138023,南昌市东湖区八一大道23号,2024/6/11 15:26:14,NULL,18,2,135,2025/7/29 15:26:14
+26,Xavier Hall,xavier.hall@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138024,昆明市五华区东风路24号,2023/12/11 15:26:14,NULL,24,4,145,2025/7/19 15:26:14
+27,Yara Allen,yara.allen@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138025,贵阳市南明区中华路25号,2024/9/11 15:26:14,NULL,15,2,150,2025/7/14 15:26:14
+28,Zack Young,zack.young@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138026,兰州市城关区南昌路26号,2024/4/11 15:26:14,NULL,20,3,160,2025/7/4 15:26:14
+29,Amy King,amy.king@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138027,银川市兴庆区解放街27号,2023/8/11 15:26:14,NULL,28,6,110,2025/8/23 15:26:14
+30,Ben Wright,ben.wright@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138028,乌鲁木齐市天山区人民路28号,2024/2/11 15:26:14,NULL,22,4,125,2025/8/8 15:26:14
+31,Chloe Lopez,chloe.lopez@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138029,拉萨市城关区北京路29号,2024/8/11 15:26:14,NULL,16,2,140,2025/7/24 15:26:14
+32,Derek Hill,derek.hill@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138030,呼和浩特市新城区新华大街30号,2024/5/11 15:26:14,NULL,19,3,155,2025/7/9 15:26:14
+33,Eva Scott,eva.scott@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138031,南宁市青秀区民族大道31号,2025/10/11 15:26:14,NULL,2,0,NULL,NULL
+34,Fred Green,fred.green@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138032,海口市龙华区海秀路32号,2025/9/11 15:26:14,NULL,3,0,NULL,NULL
+35,Gina Adams,gina.adams@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138033,合肥市蜀山区长江路33号,2025/11/11 15:26:14,NULL,1,0,NULL,NULL
+36,Hugo Baker,hugo.baker@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138034,苏州市姑苏区观前街34号,2025/8/11 15:26:14,NULL,4,0,NULL,NULL
+37,Iris Nelson,iris.nelson@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138035,无锡市滨湖区太湖大道35号,2025/10/11 15:26:14,NULL,2,0,NULL,NULL
+38,Jake Carter,jake.carter@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138036,宁波市鄞州区中山路36号,2025/7/11 15:26:14,NULL,5,0,NULL,NULL
+39,Kate Mitchell,kate.mitchell@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138037,温州市鹿城区五马街37号,2025/9/11 15:26:14,NULL,3,0,NULL,NULL
+40,Leo Perez,leo.perez@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138038,东莞市南城区鸿福路38号,2025/11/11 15:26:14,NULL,1,0,NULL,NULL
+41,Maya Roberts,maya.roberts@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138039,佛山市禅城区祖庙路39号,2025/10/11 15:26:14,NULL,2,0,NULL,NULL
+42,Nina Turner,nina.turner@email.com,$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi,13800138040,中山市东区中山路40号,2025/6/11 15:26:14,NULL,6,0,NULL,NULL
