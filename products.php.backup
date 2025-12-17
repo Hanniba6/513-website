@@ -1,0 +1,635 @@
+<?php
+/**
+ * Products Display Page
+ * Student Name: hanniba
+ * Student ID: hanniba
+ * 
+ * This page displays graphics cards from products.json in a responsive grid layout
+ */
+
+// Load products from JSON file
+$productsFile = __DIR__ . '/data/products.json';
+$products = [];
+
+if (file_exists($productsFile)) {
+    $productsData = file_get_contents($productsFile);
+    $products = json_decode($productsData, true);
+    if ($products === null) {
+        $products = [];
+    }
+}
+
+// Group products by category
+$productsByCategory = [];
+foreach ($products as $product) {
+    $category = $product['category'] ?? 'Uncategorized';
+    if (!isset($productsByCategory[$category])) {
+        $productsByCategory[$category] = [];
+    }
+    $productsByCategory[$category][] = $product;
+}
+?>
+<!DOCTYPE html>
+<html lang="en" class="colibri-wp-theme">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colibri WP - Graphics Cards</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Colibri WP Design Styles */
+        html.colibri-wp-theme body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #ffffff;
+            color: #333333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Header Navigation */
+        .colibri-header {
+            background-color: transparent;
+            padding: 20px 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            transition: background-color 0.3s;
+        }
+
+        .colibri-header.scrolled {
+            background-color: #ffffff;
+            position: fixed;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .colibri-header.scrolled .site-logo {
+            color: #333333;
+        }
+
+        .colibri-header.scrolled .main-navigation a {
+            color: #007bff;
+        }
+
+        .colibri-header:not(.scrolled) .site-logo {
+            color: #ffffff;
+        }
+
+        .colibri-header:not(.scrolled) .main-navigation a {
+            color: #ffffff;
+        }
+
+        .colibri-header:not(.scrolled) .nav-arrow {
+            border-color: #ffffff;
+        }
+
+        .header-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1232px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .site-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333333;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .site-logo .logo-main {
+            font-weight: 700;
+            font-size: 24px;
+        }
+
+        .site-logo .logo-suffix {
+            font-weight: 400;
+            font-size: 20px;
+            margin-left: 2px;
+        }
+
+        .main-navigation {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-navigation a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+        }
+
+        .main-navigation a:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .colibri-header.scrolled .main-navigation a:hover {
+            color: #0056b3;
+        }
+
+        .nav-parent {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-arrow {
+            width: 8px;
+            height: 8px;
+            border-right: 2px solid #007bff;
+            border-bottom: 2px solid #007bff;
+            transform: rotate(45deg);
+            transition: transform 0.3s;
+        }
+
+        .nav-parent:hover .nav-arrow {
+            transform: rotate(45deg) translateY(2px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: #ffffff;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-title {
+            font-size: 56px;
+            font-weight: 700;
+            margin: 0 0 20px 0;
+            color: #ffffff;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            color: #ffffff;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 16px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            box-shadow: 0 6px 16px rgba(0, 123, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            padding: 16px 32px;
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: #ffffff;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Main Content */
+        .main-content {
+            background-color: #f8f8f8;
+            padding: 60px 0;
+            min-height: 400px;
+        }
+
+        .content-wrapper {
+            max-width: 1232px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .category-section {
+            margin-bottom: 60px;
+        }
+
+        .category-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #333333;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        /* Product Cards - Blog Style */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 1024px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
+        .product-card {
+            background: #ffffff;
+            border-radius: 4px;
+            padding: 30px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-meta {
+            font-size: 13px;
+            color: #777777;
+            margin-bottom: 15px;
+        }
+
+        .product-meta .author {
+            color: #777777;
+        }
+
+        .product-meta .date {
+            color: #777777;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .product-image-wrapper {
+            margin-bottom: 20px;
+            border-radius: 4px;
+            overflow: hidden;
+            width: 100%;
+            height: 280px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .product-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333333;
+            margin: 0 0 15px 0;
+            line-height: 1.3;
+        }
+
+        .product-description {
+            color: #333333;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .product-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: #007bff;
+            margin: 15px 0;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #999999;
+            font-size: 16px;
+            margin-right: 10px;
+            font-weight: 400;
+        }
+
+        .discount-badge {
+            background-color: #e74c3c;
+            color: #ffffff;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eeeeee;
+        }
+
+        .product-comments {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #007bff;
+            font-size: 14px;
+        }
+
+        .comment-icon {
+            width: 16px;
+            height: 16px;
+        }
+
+        .read-more {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        .read-more::after {
+            content: '→';
+            font-size: 16px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #ffffff;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            text-align: center;
+            color: #777777;
+            font-size: 14px;
+            max-width: 1232px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .footer-content a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .footer-content a:hover {
+            text-decoration: underline;
+        }
+
+        .admin-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 24px;
+            background-color: #007bff;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .admin-link:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .main-navigation {
+                gap: 15px;
+                font-size: 12px;
+            }
+
+            .category-title {
+                font-size: 24px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-outline {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="colibri-header">
+        <div class="header-wrapper">
+            <a href="#" class="site-logo">
+                <span class="logo-main">Colibri</span>
+                <span class="logo-suffix"> WP</span>
+            </a>
+            <nav>
+                <ul class="main-navigation">
+                    <li><a href="#about">ABOUT</a></li>
+                    <li class="nav-parent">
+                        <a href="#parent">PARENT PAGE</a>
+                        <span class="nav-arrow"></span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Colibri WP</h1>
+            <p class="hero-description">A beautiful, very customizable, multipurpose theme that you can use to create amazing websites through drag and drop.</p>
+            <div class="hero-buttons">
+                <a href="#products" class="btn-primary">WORTH A THOUSAND WORDS</a>
+                <a href="#elements" class="btn-outline">ELEMENTS</a>
+            </div>
+        </div>
+    </section>
+
+    <main class="main-content" id="products">
+        <div class="content-wrapper">
+
+            <?php if (empty($productsByCategory)): ?>
+                <p style="text-align: center; color: #777; font-size: 1.2em;">No products available at this time.</p>
+            <?php else: ?>
+                <?php foreach ($productsByCategory as $category => $categoryProducts): ?>
+                    <div class="category-section">
+                        <h2 class="category-title"><?php echo htmlspecialchars($category); ?></h2>
+                        <div class="products-grid">
+                            <?php foreach ($categoryProducts as $product): ?>
+                                <div class="product-card">
+                                    <div class="product-meta">
+                                        <span class="author">by Theme Admin</span>
+                                        <span class="date"><?php echo date('F j, Y', strtotime('-' . rand(1, 30) . ' days')); ?></span>
+                                    </div>
+                                    
+                                    <?php if (!empty($product['image_url'])): ?>
+                                    <div class="product-image-wrapper">
+                                        <img src="<?php echo htmlspecialchars($product['image_url']); ?>" 
+                                             alt="<?php echo htmlspecialchars($product['name'] ?? ''); ?>" 
+                                             class="product-image"
+                                             onerror="this.style.display='none'">
+                                    </div>
+                                    <?php endif; ?>
+                                    
+                                    <h3 class="product-name"><?php echo htmlspecialchars($product['name'] ?? 'Unnamed Product'); ?></h3>
+                                    
+                                    <p class="product-description">
+                                        <?php 
+                                        $description = $product['description'] ?? 'No description available.';
+                                        $description = htmlspecialchars($description);
+                                        if (strlen($description) > 150) {
+                                            $description = substr($description, 0, 150) . '[...]';
+                                        }
+                                        echo $description;
+                                        ?>
+                                    </p>
+                                    
+                                    <div class="product-price">
+                                        <?php 
+                                        $price = floatval($product['price'] ?? 0);
+                                        $discount = intval($product['discount_percent'] ?? 0);
+                                        $finalPrice = $price * (1 - $discount / 100);
+                                        
+                                        if ($discount > 0) {
+                                            echo '<span class="original-price">$' . number_format($price, 2) . '</span>';
+                                        }
+                                        echo '$' . number_format($finalPrice, 2);
+                                        if ($discount > 0) {
+                                            echo '<span class="discount-badge">-' . $discount . '% OFF</span>';
+                                        }
+                                        ?>
+                                    </div>
+                                    
+                                    <div class="product-footer">
+                                        <div class="product-comments">
+                                            <svg class="comment-icon" viewBox="0 0 24 24" fill="currentColor">
+                                                <path d="M21 6c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h2v3c0 .6.4 1 1 1h.5c.2 0 .4-.1.6-.2L13.5 16H19c1.1 0 2-.9 2-2V6z"/>
+                                            </svg>
+                                            <span><?php echo rand(0, 5); ?></span>
+                                        </div>
+                                        <a href="#" class="read-more">read more</a>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="admin/" class="admin-link">Admin Panel</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; <?php echo date('Y'); ?> Colibri WP. Built using WordPress and <a href="#">ColibriWP Theme</a>.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.colibri-header');
+            const heroSection = document.querySelector('.hero-section');
+            
+            if (window.scrollY > heroSection.offsetHeight - 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
+
